@@ -14,7 +14,7 @@ A traditional CMS like Drupal in its base form consists of a monolithic architec
 
 When going headless, the architecture of the CMS goes from monolithic to the so-called decoupled architecture. In this form, only the back-end and database that the CMS offers are utilised. Then, instead of distributing the content in this back-end to one channel, it can be consumed by different channels, including web applications made with front-end frameworks like React and Angular, but even mobile applications.
 
-Monolithic and decoupled are the two main architectures that are considered when using a CMS, but there are two other architectures worth mentioning: the fully decoupled static site and progressively decoupled ~\autocite{Dropsolid2021}. All of these architectures will be discussed in this chapter.
+Monolithic and decoupled are the two main architectures that are considered when using a CMS, but there are two other architectures worth mentioning: the fully decoupled static site and progressively decoupled ~\autocite{Dropsolid2021}. The latter two are less well known, but are still important to look at to get the whole picture of what headless is. All of these architectures will be discussed in this chapter.
 
 \subsection{Monolithic or Traditional}
 The traditional or monolithic architecture is the one used by all traditional CMSs out of the box. It means that the application is one big end-to-end system. For Drupal in particular, this means that the theming functions which encompass the front-end are completely coupled and dependent on Drupal's back-end.
@@ -27,10 +27,19 @@ One other negative is that this system can feel limiting for front-end developer
 
 \subsection{Headless or Decoupled}
 
-The fully decoupled or headless architecture is the one that has become more and more popular over the years ~\autocite{Dropsolid2021}.
+The fully decoupled or headless architecture is the one that has become more and more popular over the years ~\autocite{Dropsolid2021}. Decoupled means that the components of the system don't depend on each other like they do with the monolithic architecture ~\autocite{So2018}. They interact with each other using web services instead.
+
+Fully decoupling the back-end from the front-end is the most well known type of decoupled out there. It allows developers much more freedom to choose any technology they want to build the presentation layer (front-end) of the application.
 
 \includegraphics{./img/Headless_Architecture}
 
 \subsection{Fully decoupled static site}
+
+The main difference this architecture has with the previous one is that content is not stored by the CMS itself. The content is instead maintained inside the front-end framework that is used. This is done using Hypertext Markup Language (HTML), Cascading Stylesheets (CSS) and Javascript (JS) files ~\autocite{Dropsolid2021}.
+
+The big advantage of this approach is that performance and security are segnificantly enhanced, while also reducing the complexity for developers.
+
+The approach with this kind of architecture is generally consists of retrieving content from the CMS with a static site generator, after which the static website is deployed to a Content Delivery Network (CDN) which, according to ~\textcite{Buyya2008}, is a "collaborative collection of network elements spanning the Internet, where content is replicated over
+several mirrored Web servers in order to perform transparent and effective delivery of content to the end users".
 
 \subsection{Progressively decoupled}
