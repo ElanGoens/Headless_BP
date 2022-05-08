@@ -25,4 +25,17 @@
   year = {2009}
 }
 
+@Book{So2018,
+  author = {So, Preston},
+  date   = {2018-12-12},
+  title  = {Decoupled Drupal in Practice},
+}
+
+@Article{Dropsolid2021,
+  author       = {Dropsolid},
+  date         = {2021-06-23},
+  journaltitle = {Dropsolid Knowledge hub},
+  title        = {Headless or decoupled: must-have or hype?},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
