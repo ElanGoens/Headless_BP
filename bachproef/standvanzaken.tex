@@ -23,7 +23,11 @@ This architecture has both upsides and downsides. One big upside is that this is
 
 One other negative is that this system can feel limiting for front-end developers, because they have to work within the boundaries of the specific theme they are using.
 
+\begin{figure}
+\centering
 \includegraphics{./img/Traditional_Architecture}
+\caption[Traditional CMS architecture]{A representation of the traditional or monolithic architecture ~\autocite{Dropsolid2021}}
+\end{figure}
 
 \subsection{Headless or Decoupled}
 
@@ -31,7 +35,14 @@ The fully decoupled or headless architecture is the one that has become more and
 
 Fully decoupling the back-end from the front-end is the most well known type of decoupled out there. It allows developers much more freedom to choose any technology they want to build the presentation layer (front-end) of the application.
 
-\includegraphics{./img/Headless_Architecture}
+This approach is the one that will be discussed further in this research.
+
+\begin{figure}
+	\centering
+	\includegraphics{./img/Headless_Architecture}
+	\caption[Headless CMS architecture]{A representation of the decoupled or headless architecture ~\autocite{Dropsolid2021}}
+\end{figure}
+
 
 \subsection{Fully decoupled static site}
 
@@ -43,3 +54,34 @@ The approach with this kind of architecture is generally consists of retrieving 
 several mirrored Web servers in order to perform transparent and effective delivery of content to the end users".
 
 \subsection{Progressively decoupled}
+
+When using a progressively decoupled approach, the back-end of the CMS is not completely decoupled from the front-end. Instead, a javascript front-end framework is integrated, interwoven into the existing CMS front-end. This means that the Drupal front-end is still kept and not entirely replaced, unlike in the other two decoupled approaches. 
+
+\begin{figure}
+	\centering
+	\includegraphics{./img/Progressively_Decoupled.png}
+	\caption[Progressively decoupled CMS architecture]{A representation of the progressively decoupled architecture ~\autocite{So2018}}
+\end{figure}
+
+\section{RESTful Web Services}
+\subsection{Basics of REST}
+Representational State Transfer or REST is, according to~\textcite{Wilde2011}, \emph{"A set of constraints that inform the design of a hypermedia system"}. It is an architectural style with a set of guiding principles. These principles are: 
+\begin{enumerate}
+	\item Uniform Interface: All interactions are to be made around an interface that supports all these interactions.
+	\item  Stateless: All interactions between a client and server need to be independent from one another.
+	\item Client-Server: User-interface or client concerns are to be seperated strictly from back-end and data, or server related concerns.
+	\item Layered System: Seperate components should not be allowed to see any layer beyond the layer they are interacting with.
+	\item Caching: Any resources should allow for caching by the client, the server and any other components.
+\end{enumerate}
+
+\begin{figure}
+	\centering
+	\includegraphics{./img/Rest-API.png}
+	\caption[REST API]{A representation of a REST API ~\autocite{Seobility}}
+\end{figure}
+
+\subsection{Web services in Drupal 9}
+Within Drupal 9 there exist two main ways of going headless. The most straightforward of the two is the JSON:API module. The other, which requires more configuration, is the Drupal core RESTful web services module.
+
+
+

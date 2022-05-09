@@ -40,9 +40,15 @@
 }
 
 @Book{Buyya2008,
-  author = {Buyya, Rajkumar},
+  author = {Buyya, Rajkumar and Pathan, Mukaddim and Vakali, Athena},
   date   = {2008},
   title  = {Content Delivery Networks},
+}
+
+@Book{Wilde2011,
+  author = {Wilde, Erik and Pautasso, Cesare},
+  date   = {2011},
+  title  = {REST: From Research to Practice},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
