@@ -4,3 +4,25 @@
 
 \chapter{\IfLanguageName{dutch}{Proof of Concept}{Proof of Concept}}
 \label{ch:proofofconcept}
+
+\section{Setting up a new Drupal 9 site}
+
+Creating a new Drupal 9 site with the standard Drupal 9 profile on a local server environment is fairly simple. Some different steps are involved depending on the Operting System, but overall the workflow goes like this: 
+\begin{itemize}
+	\item Create a local environment using an AMP (Apache HTTP server, MySQL relational database, PHP programming language) stack. On the most popular OSs, Linux, Windows and MacOS, packages are available that include all of these technologies. These allow for a smooth and simple process of installing a local environment.
+	\item Installing Drupal. The latest release of Drupal can always be found on the Drupal.org site.
+\end{itemize}
+
+\section{Exposing data}
+
+At the basis of using a headless CMS lies the exposing of data. This means that the data that is available within the CMS is exposed through the use of a file format like JSON or XML, just like it would be done in a traditional web API. When correctly configured, any source can then ask for and receive that data, after which they can do with it as they like. Data can also be sent back to the CMS by client applications. In Drupal 9 there are two main modules that fulfill this purpose: JSON:API and RESTful Web Services.
+
+\subsection{The JSON:API module}
+
+\subsection{The  RESTful Web Services module}
+
+\section{The front-end}
+
+\subsection{Single page web application with Angular}
+
+\subsection{Mobile application with SwiftUi}

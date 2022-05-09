@@ -3,24 +3,39 @@
 \section{Introductie} % The \section*{} command stops section numbering
 \label{sec:introductie}
 
-Hier introduceer je werk. Je hoeft hier nog niet te technisch te gaan.
+Een CMS (Content Management Systeem) is een 
+webapplicatie die mensen met weinig technische kennis de mogelijkheid geeft content te publiceren op de applicatie. De oorsprong van deze systemen ligt in de jaren '90, wanneer bedrijven als FileNet en Storybuilder closed source systemen ontwikkelden. Pas tien jaar later, in de vroege jaren 2000, ontstonden de eerste open source alternatieven zoals Drupal en Wordpress. Dit zijn systemen die de dag van vandaag nog altijd heel populair zijn. ~\autocite{Burgy2020}
 
-Je beschrijft zeker:
+Content management systemen hebben heel wat voordelen, zoals gemak van gebruik en snelheid van ontwikkeling. Ze brengen echter ook een paar grote beperkingen met zich mee. Zo hangt de front-end van de applicatie helemaal vast aan de back-end, wat ervoor zorgt dat de applicatie minder flexibel is. In een tijd waarin microservices meer en meer belangrijk worden ~\autocite{Shabani2021}, is het dan ook belangrijk dat CMS mee evolueren.
 
-\begin{itemize}
-  \item de probleemstelling en context
-  \item de motivatie en relevantie voor het onderzoek
-  \item de doelstelling en onderzoeksvraag/-vragen
-\end{itemize}
+Het gebruiken van een headless CMS kan deze problemen oplossen. Hier worden namelijk de back-end en de front-end losgekoppeld van elkaar. Dit geeft de ontwikkelaar meer flexibiliteit, maar hierbij gaan enkele belangrijke features van de CMS, waaronder SEO en het gebruik van thema's verloren. Ook draait de ontwikkeling vaak duurder uit. ~\autocite{Luksza}
+
+Doordat het gebruik van een headless CMS meer en meer populair wordt ~\autocite{Luksza} is het belangrijk om te analyseren wat precies de gevolgen zijn hiervan. Welke voordelen en nadelen komen hierbij kijken? En wat is het gevolg voor SEO? In dit onderzoek zullen deze onderzoeksvragen beantwoord worden. 
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{State-of-the-art}
 \label{sec:state-of-the-art}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein. Dit kan bijvoorbeeld een literatuurstudie zijn. Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek? Wat is de relevantie met jouw onderzoek?
+\subsection{Wat is een CMS}
+Een CMS, voluit Content Management Systeem, is een webapplicatie die mensen met weinig technische kennis de mogelijkheid geeft content te publiceren op de applicatie. Deze systemen worden al jarenlang gebruikt, en bieden tal van voordelen tegenover de traditionele ontwikkeling van webapplicaties.
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Doll1954}! Denk zeker goed na welke werken je refereert en waarom.
+\subsection{Wat is headless}
+Bij headless wordt, zoals de naam al doet vermoeden, het 'hoofd' van het 'lichaam' van de CMS gescheden. Dit zorgt ervoor dat je alleen de back-end van de applicatie overhoudt. Dit maakt het mogelijk om meerdere applicaties hiermee te verbinden die allemaal dezelfde, gecentraliseerde content gebruiken en presenteren. 
+
+Zo kan je bijvoorbeeld een webapplicatie schrijven in een framework als React, maar ook native applicaties geschreven voor IOS of Android kunnen hier gebruik van maken. Dit is dan ook het grootste voordeel van deze aanpak: al de data is gecentraliseerd op een plek. Dit kan je ook bereiken door zelf een API te schrijven, maar dan verlies je de voordelen die een moderne CMS met zich meebrengt, en dan vooral dat mensen met weinig technische kennis ook de content kunnen  bewerken. 
+
+In een vergelijkende studie van ~\autocite{Barker2018} wordt aangetoond welke factoren er belangrijk zijn in de keuze voor een headless CMS. Zo wordt er bijvoorbeeld gesproken over Content Modeling. Dit is eigenlijk de basisfunctie van elk CMS: het weergeven van content en data op een beheerbare manier. Hiervoor wordt in de meeste gevallen gebruik gemaakt van Content Types. Er bestaan drie verschillende manieren om dit te modelleren: discreet, relationeel, en organisationeel.
+
+\subsection{Search Engine Optimisation}
+SEO of Search Engine Optimisation is de kunst om webverkeer en webgebruikers naar een website te leiden ~\autocite{Davis2006}. In praktisch alle moderne Content Management Systems zijn er plugins of tools aanwezig die helpen om dit proces te optimaliseren. In Wordpress zijn er bijvoorbeeld meer dan 85 plugins die zich hiermee bezig houden ~\autocite{Juliao2020}. 
+
+Wat er volgens ~\autocite{Shreves2012} ook heel erg belangrijk is voor SEO zijn keywords die zich bevinden in de domeinnaam en op de pagina's van een website. Hier moet dus ook zeker rekening mee gehouden worden.
+
+\subsection{Belang van dit onderzoek}
+Het belang van dit onderzoek is dat er hier ook zal gefocust worden op de workflow die ontwikkelaars moeten doorlopen om een CMS headless te gebruiken. Ook zal er bekeken worden wat de invloed is op SEO wanneer een headless CMS wordt gebruikt, iets wat nog weinig onderzocht is. 
+
+De meeste bestaande onderzoeken naar headless CMS zijn vergelijkend, en vergelijken dus verschillende CMS met elkaar met als doel de beste keuze te bepalen ~\autocite{Barker2018}. Dit onderzoek zal eerder dieper ingaan op hoe een headless CMS in zijn werk gaat en wat de voordelen en nadelen ervan zijn ten opzichte van een traditioneel systeem.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -35,17 +50,26 @@ Je mag gerust gebruik maken van subsecties in dit onderdeel.
 \section{Methodologie}
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor experimenten, vragenlijsten, simulaties? Je beschrijft ook al welke tools je denkt hiervoor te gebruiken of te ontwikkelen.
+Er zal in dit onderzoek eerst en vooral bekeken worden welke opties er bestaan voor het gebruiken van een headless CMS en hoe dit kan worden opgezet. Ook zal er worden onderzocht hoe je een traditioneel CMS omzet naar een headless CMS.
+
+Daarnaast zal er ook worden onderzocht wat de gevolgen zijn van het gebruik van een headless CMS ten opzichte van een traditioneel. Er zal dus besproken worden wat de voor - en nadelen zijn hiervan, en voor wie welke optie het meest geschikt is. De snelheid van ontwikkelen zal worden gemeten in beide gevallen.
+
+Als laatste wordt er ook onderzocht hoe SEO precies werkt binnen een traditioneel CMS en binnen headless. Hier wordt bekeken of er grote verschillen zijn tussen de twee opties. Ook andere features die in een traditioneel systeem aanwezig zijn, zoals thema's, zullen worden bekeken en er zal worden onderzocht of deze een groot tijdsvoordeel opleveren bij de ontwikkeling.
+
+Deze dingen zullen worden gemeten door verschillende systemen te gebruiken, zowel traditioneel als headless. Hierna kan er een vergelijking worden gemaakt over hoeveel tijd de ontwikkeling in beslag neemt, en welke features een voordeel opleveren wat betreft ontwikkelingssnelheid. De SEO zal worden geanalyseerd door middel van bestaande sites, gebruik makende van Google analytics en tools inbegrepen in de CMS zelf. De resultaten hiervan zullen worden vergeleken met elkaar.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwachte resultaten}
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.
+Het headless gebruik van een traditionele CMS kan best wel wat tijd in beslag nemen. Zo moeten er REST endpoints worden opgemaakt om de data beschikbaar te stellen voor de losgekoppelde front-end. 
+
+Er wordt verwacht dat het ontwikkelen van een headless webapplicatie een stuk meer tijd zal innemen dan bij het gebruik van een traditionele CMS, maar de flexibiliteit en de personaliseerbaarheid zal hier wel veel beter zijn. Ook zullen de SEO optimalisaties die inbegrepen zijn in een standaard CMS verloren gaan, waardoor deze door de developer zelf nog zullen moeten gebeuren.
+
 
 %---------- Verwachte conclusies ----------------------------------------------
 \section{Verwachte conclusies}
 \label{sec:verwachte_conclusies}
 
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+De populariteit van Content Management Systemen zal blijven groeien. Zeker headless CMS is een technologie die meer en meer gebruikt zal worden. De flexibiliteit die je krijgt door het opsplitsen van back - en front-end is voor ontwikkelaars extreem waardevol. Headless is echter geen vervanging voor een traditionele CMS en dat zal het waarschijnlijk ook nooit worden. 
 

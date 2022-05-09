@@ -51,4 +51,10 @@
   title  = {REST: From Research to Practice},
 }
 
+@Article{Seobility,
+  author = {Seobility},
+  title  = {REST API},
+  url    = {https://www.seobility.net/en/wiki/REST_API},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
