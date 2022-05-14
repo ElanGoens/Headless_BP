@@ -9,12 +9,124 @@
 
 As mentioned in the previous chapter, this research will go deeper into headless Drupal and attempt to figure out how to utilise it and why it became so popular. But before anwsering these questions it is important to have a clear understanding of what headless Drupal acually is. This will be discussed in this chapter. 
 
+\section{Drupal: the basics}
+
+Before diving into headless, a torough understanding of the CMS, in this is case Drupal, is required. This section will cover the basics of Drupal that are needed to get started with headless.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Drupal core}
+
+When installing Drupal with the standard profile, only Drupal core is included. Drupal core includes all the basic features you need to get started on a website. Some of the most important features that are included in core are ~\autocite{Tomlinson2015}: 
+
+\begin{itemize}
+	\item  content
+	\item  menus
+	\item  users
+	\item  roles and permissions
+	\item  views
+\end{itemize}
+There are a lot more features included in core, but these can be seen as the most important ones.
+
+For any basic site Drupal core will probably suffice, but often a feature is needed that is not included in core. That is when contributed (contrib) and custom modules come in handy.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Contributed and custom modules}
+
+Contributed modules are custom modules, made by developers in the Drupal community, that are free to use and completely open to customization. There are thousands of contributed modules available on \url{https://www.drupal.org}. Some examples of popular contributed modules include~\autocite{Tomlinson2015}: 
+
+\begin{itemize}
+	\item  \emph{Commerce}
+	\item  \emph{Display Suite}
+	\item  \emph{Backup and Migrate}
+	\item  \emph{Pathauto}
+\end{itemize}
+
+As said before, these contributed modules are all available and free to use on \url{https://www.drupal.org}. There is also the possibility for developers to create their own custom modules. For most things you would want for your site, you can probably find a contributed module, but sometimes those don't do exactly what you want. That's when you can create your own module, or customize one of the contributed modules to fit your needs.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The building blocks of Drupal 9}
+
+\subsubsection{Content Types}
+
+\subsubsection{Pages}
+
+\subsubsection{Blocks}
+\label{sss:blocks}
+
+\subsubsection{Users, Roles and Permissions}
+
+For most websites nowadays, it is important to have the ability to control who can access the content on the site. For this purpose Drupal includes \emph{Users}. These users are seperated into two different groups~\autocite{Tomlinson2015}:
+\begin{itemize}
+	\item  Anonymous Users: These are Users that are not logged in to your site. These users often have restricted access to websites.
+	\item  Authenticated Users: These are Users that log in to your site, generally using a combination of an email address and a password. Usually these users have access to all the functionalities the site has to offer.
+\end{itemize}
+
+\emph{Roles} are usually defined as categories. Each Autheticated User has a specific role assigned to them. Some roles have access to more part of the site than others. This allows you to completely control what you want specific Users to be able to do on your site.
+
+\emph{Permissions} are enabled or disabled on a specific role. These allow you to control what roles can do certain things on your site. For example, one role could have the permission to be able to edit certain pages, while another role does not.
+
+\subsubsection{Taxonomy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The front-end}
+
+\subsubsection{Themes}
+
+Themes are used within Drupal to change the look and feel of the website and are made up of Hypertext Markup Language (HTML) and Cascading Style Sheets (CSS). According to ~\textcite{Tomlinson2015}, a Drupal theme defines four main components on a Drupal website: 
+
+\begin{itemize}
+	\item  The colors used
+	\item  The fonts used
+	\item  The placement of images and graphics
+	\item  The layout of a page
+\end{itemize}
+
+The default theme that is installed on any new Drupal website is the Bartik theme. Other themes, like contributed modules, are available to use on \url{https://www.drupal.org}. Drupal 9 allows you to choose different themes for the site itself and for the administration portion of the site. Many of the available themes use the same, or at least a very similar layout to the default theme, but Drupal also gives you the possibility to customize any of these themes or even lets you create your own theme~\autocite{Tomlinson2015}.
+
+A Drupal theme usually consists of multiple regions, in which content and blocks can be placed. These regions can be customized to fit your needs. Commonly used regions include~\autocite{Tomlinson2015}: 
+\begin{itemize}
+	\item  Menus, allowing for the placements of links and menu items
+	\item  Sidebars
+	\item  Headers
+	\item  Footers
+	\item  A content region that is usually the main region of a page and allows the placement of any content
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics{./img/Bartik_Theme.png}
+	\caption[The Bartik theme]{A representation of the layout used by the default Bartik theme ~\autocite{Tomlinson2015}}
+\end{figure}
+
+
+\subsubsection{Layout Builder}
+
+Before the introduction of Drupal 8 theming and styling your website tended to be a little tedious. However, with Drupal 8 came a new feature to make managing the front-end of your website a little easier and more straight forward: Layout Builder~\autocite{Drupal2021}.
+
+Layout Builder is a tool that allows you to create layouts using a visual drag and drop interface. It allows you to easily place any blocks on your pages within the regions provided by your theme, and also lets you display any piece of content. The useful thing about Layout Builder is that it can be used by people without much technical knowledge, as there is no need to write any code. Previously, other tools like \emph{Display Suite} and \emph{Panels} were used to accomplish this kind of thing. The problem here was that these modules were, in many cases, incompatible with one another~\autocite{Drupalize2022}.
+
+When creating a layout using Drupal Layout Builder, two main concepts are used~\autocite{Drupalize2022}: 
+\begin{itemize}
+	\item  Sections are containers in which blocks can be placed.
+	\item  Blocks are any kind of content, and can be placed within any section.
+\end{itemize}
+There is a difference between the blocks specific to Layout Builder and the Drupal blocks which were mentioned in section \ref{sss:blocks}. The blocks used in Layout Builder are considered to be more of a guideline, or a placeholder indicating where some specific piece of content goes~\autocite{Drupalize2022}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Architectures}
 A traditional CMS like Drupal in its base form consists of a monolithic architecture. This means that the CMS offers anything a user would need in a web application, including a database, back-end and front-end.
 
 When going headless, the architecture of the CMS goes from monolithic to the so-called decoupled architecture. In this form, only the back-end and database that the CMS offers are utilised. Then, instead of distributing the content in this back-end to one channel, it can be consumed by different channels, including web applications made with front-end frameworks like React and Angular, but even mobile applications.
 
 Monolithic and decoupled are the two main architectures that are considered when using a CMS, but there are two other architectures worth mentioning: the fully decoupled static site and progressively decoupled ~\autocite{Dropsolid2021}. The latter two are less well known, but are still important to look at to get the whole picture of what headless is. All of these architectures will be discussed in this chapter.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Monolithic or Traditional}
 The traditional or monolithic architecture is the one used by all traditional CMSs out of the box. It means that the application is one big end-to-end system. For Drupal in particular, this means that the theming functions which encompass the front-end are completely coupled and dependent on Drupal's back-end.
@@ -28,6 +140,8 @@ One other negative is that this system can feel limiting for front-end developer
 \includegraphics{./img/Traditional_Architecture}
 \caption[Traditional CMS architecture]{A representation of the traditional or monolithic architecture ~\autocite{Dropsolid2021}}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Headless or Decoupled}
 
@@ -43,6 +157,7 @@ This approach is the one that will be discussed further in this research.
 	\caption[Headless CMS architecture]{A representation of the decoupled or headless architecture ~\autocite{Dropsolid2021}}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Fully decoupled static site}
 
@@ -52,6 +167,8 @@ The big advantage of this approach is that performance and security are segnific
 
 The approach with this kind of architecture is generally consists of retrieving content from the CMS with a static site generator, after which the static website is deployed to a Content Delivery Network (CDN) which, according to ~\textcite{Buyya2008}, is a "collaborative collection of network elements spanning the Internet, where content is replicated over
 several mirrored Web servers in order to perform transparent and effective delivery of content to the end users".
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Progressively decoupled}
 
@@ -63,9 +180,14 @@ When using a progressively decoupled approach, the back-end of the CMS is not co
 	\caption[Progressively decoupled CMS architecture]{A representation of the progressively decoupled architecture ~\autocite{So2018}}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{RESTful Web Services}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Basics of REST}
-Representational State Transfer or REST is, according to~\textcite{Wilde2011}, \emph{"A set of constraints that inform the design of a hypermedia system"}. It is an architectural style with a set of guiding principles. These principles are: 
+Representational State Transfer or REST is, according to~\textcite{Wilde2011}, \emph{"A set of constraints that inform the design of a hypermedia system"}. It is an architectural style with a set of guiding principles. The main principles are: 
 \begin{enumerate}
 	\item Uniform Interface: All interactions are to be made around an interface that supports all these interactions.
 	\item  Stateless: All interactions between a client and server need to be independent from one another.
@@ -80,8 +202,44 @@ Representational State Transfer or REST is, according to~\textcite{Wilde2011}, \
 	\caption[REST API]{A representation of a REST API ~\autocite{Seobility}}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Web services in Drupal 9}
-Within Drupal 9 there exist two main ways of going headless. The most straightforward of the two is the JSON:API module. The other, which requires more configuration, is the Drupal core RESTful web services module.
+Within Drupal 9 there exist two main ways of going headless. The most straightforward of the two is the JSON:API module. The other, which requires more configuration, is the Drupal core RESTful web services module. 
+
+Both of these modules provide the possibility to interact with data through the classic HTTP request methods. According to~\autocite{Wilde2011} these methods are: 
+
+\begin{itemize}
+	\item GET: requests the retrieval of specific data.
+	\item POST: requests the creation of some data, which is usually defined in the body of the request.
+	\item PUT/PATCH: requests that some data is updated. The data to be updated is usually identified by its id, and the new data is normally defined in the body of the request like with a POST method.
+	\item DELETE: requests the deletion of specific data.
+\end{itemize}
+
+\subsubsection{JSON:API}
+
+Before the release of Drupal 8, the JSON:API was an immensly popular web services contributed module. Due to it's popularity and wide use, the first stable release of the module was included in Drupal core in Drupal 8.7. This meant that anyone using Drupal from that point on could easily enable the module on any Drupal installation. The only requirement for this module to be enabled is that the Serialization module also has to be enabled~\autocite{Drupal2019}.
+
+This module is meant to be easy to use, without a lot of configuration being necessary. Enabling the module will give the developer access to a REST API for any content type available on the website, exposing all the content of those types~\autocite{So2018}. This approach has many advantages. The main advantage is that is is very easy to use. One click is all it takes to enable the module and make all relational data available.
+
+On the other hand, exposing all data like this this also means that, in a lot of situations, a lot of data will be exposed that won't ever be used because it is not needed. There is no in between with this module: you enable it and expose all data, or don't enable it and expose no data at all.
+
+Using this module, the data of each entity is exposed in a set structure, using two members inside the JSON object. The \emph{attributes} member holds all data that is specific to that entity, like a name or a birthdate for an entity representing a person~\autocite{Drupal2019}. 
+
+The \emph{relationships} member holds a limited amount of data of another entity with which the current entity has some kind of relationship. An example of this would be when a \emph{person} entity has a relationship with a \emph{house} entity, the title and id of that house would be available under the relationships of that person~\autocite{Drupal2019}.
+
+As said earlier this module does not require any configuration. The only configuration option that is available out of the box, is the option to only accept read (GET) operations, or to also allow create (POST), update (PUT/PATCH) and delete (DELETE) operations~\autocite{So2018}.
 
 
+\subsubsection{RESTful web services}
 
+Another option to expose data in Drupal 9 is the RESTful web services module. This module has been included in Drupal core since Drupal 8. Just like the JSON:API module it depends on the Serialization module to work~\autocite{Drupal2018}.
+This module generally considered harder to use than the JSON:API module. This is because this module does not work out of the box like JSON:API does. It requires quite a bit of configuration to get it working~\autocite{Drupal2018}.
+
+The compexity of this module has some cons, but also some pros. The big advantage this module offers compared to the JSON module, is that it allows the developer to pick and choose the resources and content types to be made available. It can be customized so that only one content type is exposed, while the JSON:API module only allows you to expose all content types within the system~\autocite{So2018}. 
+
+But with this customizability comes a cost. To make this module work, the developer has to configure eacht entity type they want exposed seperately. This can be a very tedious task, especialy in bigger sites where tens, if not hundreds of entity types can exist.
+
+The big difference between this module and the previous one, is that with the REST module data other entities can be exposed through the creation of custom RestResource plugins. This means that is offers the possibility of exposing any custom data that might exist within the system. An example of this would be some piece of configuration.
+
+For most use cases however, just being able to expose entities will be more than enough. This is why this module has lost some popularity in recent years in favor of JSON:API~\autocite{So2018}.

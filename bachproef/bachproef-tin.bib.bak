@@ -57,4 +57,96 @@
   url    = {https://www.seobility.net/en/wiki/REST_API},
 }
 
+@Book{Harman2007,
+  author = {Harman, Keith and Koohang, Alex},
+  date   = {2007},
+  title  = {Learning Objects: Standards, Metadata, Repositories, & LCMS},
+  url    = {https://books.google.be/books?hl=nl&lr=&id=kzqfX8x8oe0C&oi=fnd&pg=PA157&dq=content management system&ots=XIMEKWfbg9&sig=aLZBfKK0SaiR3LCER-oU0_225a8&redir_esc=y#v=onepage&q=content management system&f=false},
+}
+
+@Book{Davis2006,
+  author = {Davis, Harold},
+  date   = {2006-05-23},
+  title  = {Search Engine Optimization},
+}
+
+@Article{Juliao2020,
+  author       = {Juliao, Sérgio and Curado Malta, Mariana},
+  date         = {2020},
+  journaltitle = {Proceedings of the 17th International Joint Conference on e-Business and Telecommunications},
+  title        = {A Study of the Wordpress SEO Plugins for Microformats},
+  pages        = {154-161},
+  url          = {https://www.scitepress.org/Papers/2020/100149/100149.pdf},
+  volume       = {3},
+}
+
+@Book{Shreves2012,
+  author = {Shreves, Ric},
+  date   = {2012-09-18},
+  title  = {Drupal Search Engine Optimization},
+  url    = {https://books.google.be/books?hl=nl&lr=&id=k86H7TFmXTIC&oi=fnd&pg=PT7&dq=drupal seo&ots=Ly0XIk3CSV&sig=Qz-eTNJq9ySRyPSTqw-RQNAQkxw#v=onepage&q=drupal seo&f=false},
+}
+
+@Article{Barker2018,
+  author       = {Barker, Deane},
+  date         = {2018-10-16},
+  journaltitle = {Deane Barker Tech Blog},
+  title        = {Points of Differentiation in Headless CMS},
+  url          = {https://deanebarker.net/tech/blog/points-of-differentiation-in-headless-cms/},
+}
+
+@Article{Shabani2021,
+  author       = {Shabani, Isak and Mëziu, Endrit and Berisha, Blend and Biba, Tonit},
+  date         = {2021},
+  journaltitle = {International Journal of Advanced Computer Science and Applications},
+  title        = {Design of Modern Distributed Systems based on Microservices Architecture},
+  number       = {2},
+  pages        = {153-159},
+  url          = {https://www.researchgate.net/profile/Blend-Berisha/publication/349749418_Design_of_Modern_Distributed_Systems_based_on_Microservices_Architecture/links/6064be8592851c91b1944ff4/Design-of-Modern-Distributed-Systems-based-on-Microservices-Architecture.pdf},
+  volume       = {12},
+}
+
+@Article{Burgy2020,
+  author = {Burgy, Pierre},
+  date   = {2020-07-27},
+  title  = {A brief history of the Content Management System},
+  url    = {https://opensource.com/article/20/7/history-content-management-system},
+}
+
+@Article{Luksza,
+  author = {Luksza, Rafal},
+  title  = {Should I use a headless CMS? Use cases, pro's and con's},
+  url    = {https://www.softkraft.co/headless-cms-pros-cons/},
+}
+
+@Book{Tomlinson2015,
+  author = {Tomlinson, Todd},
+  date   = {2015},
+  title  = {Beginning Drupal 8},
+}
+
+@Article{Drupal2018,
+  author       = {Drupal},
+  date         = {2018},
+  journaltitle = {Drupal Documentation},
+  title        = {REST Documentation},
+  url          = {https://www.drupal.org/docs/8/core/modules/rest},
+}
+
+@Article{Drupal2019,
+  author       = {Drupal},
+  date         = {2019},
+  journaltitle = {Drupal Documentation},
+  title        = {JSON:API Documentation},
+  url          = {https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/jsonapi},
+}
+
+@Article{Drupal2021,
+  author       = {Drupal},
+  date         = {2021},
+  journaltitle = {Drupal Documentation},
+  title        = {Layout Builder Documentation},
+  url          = {https://www.drupal.org/docs/8/core/modules/layout-builder},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
