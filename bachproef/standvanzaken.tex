@@ -49,12 +49,18 @@ As said before, these contributed modules are all available and free to use on \
 
 \subsection{The building blocks of Drupal 9}
 
-\subsubsection{Content Types}
+Drupal 9 Core has a few fundamental concepts that make up the entirety of the system. This section will take a deeper look at these.
 
-\subsubsection{Pages}
+\subsubsection{Content and Content Types}
+
+Content Types are, according to \textcite{Tomlinson2015}, often seen as the single most powerful feature Drupal has to offer. A content type is defined by ~\textcite{Drupal2021} as \emph{"a pre-defined collection of data types (Fields) which relate to each other by an informational context"}. 
+
+A standard Drupal 9 installation includes two basic content types to get you started: \emph{Basic page} and \emph{Article}. Other than these two, you can also create your own custom content type. Custom content types can be anything, but like in Object Oriented Programming (OOP), they usually represent some real world object~\autocite{Tomlinson2015}.
 
 \subsubsection{Blocks}
 \label{sss:blocks}
+
+\textcite{Drupal2021} defines blocks as \emph{"boxes of content rendered into an area, or region, of a web page"}. Drupal offers a few standard block included in core, but just like with content types it is possible to create your own custom blocks that can include any content available in the system. As the definition states, blocks can be placed inside of regions, on any page. This is done using the block layout manager, or by using Layout Builder \autocite{Tomlinson2015}. The latter will be discussed more in section \ref{sss:lb}.
 
 \subsubsection{Users, Roles and Permissions}
 
@@ -64,11 +70,27 @@ For most websites nowadays, it is important to have the ability to control who c
 	\item  Authenticated Users: These are Users that log in to your site, generally using a combination of an email address and a password. Usually these users have access to all the functionalities the site has to offer.
 \end{itemize}
 
-\emph{Roles} are usually defined as categories. Each Autheticated User has a specific role assigned to them. Some roles have access to more part of the site than others. This allows you to completely control what you want specific Users to be able to do on your site.
+\emph{Roles} are usually defined as categories. Each Autheticated User has a specific role assigned to them. Some roles have access to more part of the site than others. This allows you to completely control what you want specific Users to be able to do on your site~\autocite{Tomlinson2015}.
 
-\emph{Permissions} are enabled or disabled on a specific role. These allow you to control what roles can do certain things on your site. For example, one role could have the permission to be able to edit certain pages, while another role does not.
+\emph{Permissions} are enabled or disabled on a specific role. These allow you to control what roles can do certain things on your site. For example, one role could have the permission to be able to edit certain pages, while another role does not~\autocite{Tomlinson2015}.
+
+\subsubsection{Views}
+
+Views is one of the most important, and also one of the most used modules in Drupal 9. It has been a part of Drupal Core since Drupal 8. The Views module allows you to create lists content that can be displayed on your website.
+
+The concept of Views in Drupal 9 is realized in two modules: the core \emph{Views} module, and the \emph{Views UI} module accompanying it. Views UI offers an administration interface to work with and create views, so it is a crucial part of Views in its entirety~\autocite{Tomlinson2015}.
+
+As already mentioned, in its simplest form Views allows you to create lists of content. But there are a lot of customization and configuration options available here. For example, there is the possibility to display your content in a regular list, but you can also choose to display it in a table, or even a grid~\autocite{Tomlinson2015}.
+
+Views also offers the possibility to create multiple different displays for your lists. For example, you could display your view on a dedicated page, but you could also create a block for it, that you can then display on any page you like. Another feature available with Views, is the ability to sort or filter any lists you create~\autocite{Tomlinson2015}.
 
 \subsubsection{Taxonomy}
+
+Taxonomy in Drupal 9 is, according to~\textcite{Tomlinson2015}, a very underused feature. ~\textcite{MerriamWebsterTax} defines taxonomy as \emph{"the study of the general principles of scientific classification"}. Taxonomy in Drupal essentialy means the same thing. It is a way to classify certain things on your site.
+
+According to~\textcite{Tomlinson2015}, taxonomy in Drupal is divided into two different groups: tagging and structured taxonomy. Tagging enables you to register key words on you site, and then assign that tag to some piece of content, essentially grouping it. This is useful to, for example, filter some content that is displayed in a list based on a specific tag. The big problem with this kind of classification is that it is easy to make mistakes that make the whole system difficult to use. For example, you could misspell a taxonomy term, making it harder for users to find content tagged with this tag, as they would not show up when searching for it~\autocite{Tomlinson2015}.
+
+Structured taxonomy takes a different approach. With this approach, only the admin of the site can create taxonomy terms. You can then categorize content by simply choosing one or more of these terms when editing the content. This way users will only be able to filter the content based on those terms, but you also would not run into the issue interfering with the user experience by making a mistake while creating the terms. Another benefit of structured taxonomy is that it gives you the possibility to create a certain hierachy, meaning you can create groups of taxonomy terms, which then group some content together, giving you some more customization~\autocite{Tomlinson2015}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -104,6 +126,7 @@ A Drupal theme usually consists of multiple regions, in which content and blocks
 
 
 \subsubsection{Layout Builder}
+\label{sss:lb}
 
 Before the introduction of Drupal 8 theming and styling your website tended to be a little tedious. However, with Drupal 8 came a new feature to make managing the front-end of your website a little easier and more straight forward: Layout Builder~\autocite{Drupal2021}.
 
@@ -217,6 +240,7 @@ Both of these modules provide the possibility to interact with data through the 
 \end{itemize}
 
 \subsubsection{JSON:API}
+\label{sss:JSONAPI}
 
 Before the release of Drupal 8, the JSON:API was an immensly popular web services contributed module. Due to it's popularity and wide use, the first stable release of the module was included in Drupal core in Drupal 8.7. This meant that anyone using Drupal from that point on could easily enable the module on any Drupal installation. The only requirement for this module to be enabled is that the Serialization module also has to be enabled~\autocite{Drupal2019}.
 
@@ -238,8 +262,18 @@ This module generally considered harder to use than the JSON:API module. This is
 
 The compexity of this module has some cons, but also some pros. The big advantage this module offers compared to the JSON module, is that it allows the developer to pick and choose the resources and content types to be made available. It can be customized so that only one content type is exposed, while the JSON:API module only allows you to expose all content types within the system~\autocite{So2018}. 
 
-But with this customizability comes a cost. To make this module work, the developer has to configure eacht entity type they want exposed seperately. This can be a very tedious task, especialy in bigger sites where tens, if not hundreds of entity types can exist.
+But with this customizability comes a cost. To make this module work, the developer has to configure each entity type they want exposed seperately. This can be a very tedious task, especialy in bigger sites where tens, if not hundreds of entity types can exist.
 
-The big difference between this module and the previous one, is that with the REST module data other entities can be exposed through the creation of custom RestResource plugins. This means that is offers the possibility of exposing any custom data that might exist within the system. An example of this would be some piece of configuration.
+The big difference between this module and the previous one, is that with the REST module data other than entities can be exposed through the creation of custom RestResource plugins. This means that it offers the possibility of exposing any custom data that might exist within the system. An example of this would be some piece of configuration.
 
 For most use cases however, just being able to expose entities will be more than enough. This is why this module has lost some popularity in recent years in favor of JSON:API~\autocite{So2018}.
+
+\section{Front-end possibilities with headless}
+
+As illustrated in the last section, there are multiple possibilities to expose data in Drupal 9. Data that is exposed can be consumed by any front-end technology that has some sort of way to handle HTTP requests. In this section some of these technologies will be discussed.
+
+\subsection{Web applications}
+
+When it comes to consuming data from an external API, the JavaScript front-end frameworks have been king for the last few years. They allow developers to easily make a request to a URL. One of the biggest players in this field is Angular. Being backed by Google, it means Angular has a very active community of developers around it. Other examples of JavaScript frameworks include the also well known React and Vue.js. Another less well known example is Svelte, a framework that has been gaining a lot of traction in the last couple of years~\autocite{Uzayr2019}.
+
+\subsection{Mobile applications}
