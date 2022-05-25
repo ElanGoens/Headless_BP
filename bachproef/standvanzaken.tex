@@ -7,7 +7,7 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-As mentioned in the previous chapter, this research will go deeper into headless Drupal and attempt to figure out how to utilise it and why it became so popular. But before anwsering these questions it is important to have a clear understanding of what headless Drupal acually is. This will be discussed in this chapter. 
+As mentioned in the previous chapter, this research will go deeper into headless Drupal and attempt to figure out how to utilise it and why it became so popular. But before answering these questions it is important to have a clear understanding of what headless Drupal actually is. This will be discussed in this chapter. 
 
 \section{Drupal: the basics}
 
@@ -17,7 +17,7 @@ Before diving into headless, a torough understanding of the CMS, in this is case
 
 \subsection{Drupal core}
 
-When installing Drupal with the standard profile, only Drupal core is included. Drupal core includes all the basic features you need to get started on a website. Some of the most important features that are included in core are ~\autocite{Tomlinson2015}: 
+When installing Drupal with the standard profile, only \gls{Drupal core} is included. Drupal core includes all the basic features you need to get started on a website. Some of the most important features that are included in core are ~\autocite{Tomlinson2015}: 
 
 \begin{itemize}
 	\item  content
@@ -45,6 +45,11 @@ Contributed modules are custom modules, made by developers in the Drupal communi
 
 As said before, these contributed modules are all available and free to use on \url{https://www.drupal.org}. There is also the possibility for developers to create their own custom modules. For most things you would want for your site, you can probably find a contributed module, but sometimes those don't do exactly what you want. That's when you can create your own module, or customize one of the contributed modules to fit your needs.
 
+\subsubsection{Composer}
+\label{sss:composer}
+
+When talking about contributed modules, it is important to also mention \gls{Composer}. According to \textcite{M.Kromann2018}, Composer is a dependency manager for the PHP programming language. As such, it can be used in Drupal project to easily install contributed modules from a \gls{CLI} (Command Line Interface). It can be compared to \gls{NPM} (Node Package Manager), which is a package manager for JavaScript. Installing contributed modules with composer is fairly simple. Simply running the "composer require {module name}", with "{module name}" replaced by the name of the module you want to install, will install this module. Enabling the module can then be done using the Drupal UI.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The building blocks of Drupal 9}
@@ -53,14 +58,14 @@ Drupal 9 Core has a few fundamental concepts that make up the entirety of the sy
 
 \subsubsection{Content and Content Types}
 
-Content Types are, according to \textcite{Tomlinson2015}, often seen as the single most powerful feature Drupal has to offer. A content type is defined by ~\textcite{Drupal2021} as \emph{"a pre-defined collection of data types (Fields) which relate to each other by an informational context"}. 
+Content Types are, according to \textcite{Tomlinson2015}, often seen as the single most powerful feature Drupal has to offer. A content type is defined by ~\textcite{Drupal2021} as \emph{"a pre-defined collection of data types (Fields) which relate to each other by an informational context"}. In other words, a Content Type is a sort of template by which content can be created.
 
-A standard Drupal 9 installation includes two basic content types to get you started: \emph{Basic page} and \emph{Article}. Other than these two, you can also create your own custom content type. Custom content types can be anything, but like in Object Oriented Programming (OOP), they usually represent some real world object~\autocite{Tomlinson2015}.
+A standard Drupal 9 installation includes two basic content types to get you started: \emph{Basic page} and \emph{Article}. Other than these two, you can also create your own custom content type. Custom content types can be anything, but like in Object Oriented Programming (\gls{OOP}), they usually represent some real world object~\autocite{Tomlinson2015}.
 
 \subsubsection{Blocks}
 \label{sss:blocks}
 
-\textcite{Drupal2021} defines blocks as \emph{"boxes of content rendered into an area, or region, of a web page"}. Drupal offers a few standard block included in core, but just like with content types it is possible to create your own custom blocks that can include any content available in the system. As the definition states, blocks can be placed inside of regions, on any page. This is done using the block layout manager, or by using Layout Builder \autocite{Tomlinson2015}. The latter will be discussed more in section \ref{sss:lb}.
+\textcite{Drupal2021} defines blocks as \emph{"boxes of content rendered into an area, or region, of a web page"}. Drupal offers a few standard block included in Drupal core, but just like with content types it is possible to create your own custom blocks that can include any content available in the system. As the definition states, blocks can be placed inside of regions, on any page. This is done using the block layout manager, or by using Layout Builder \autocite{Tomlinson2015}. The latter will be discussed more in section \ref{sss:lb}.
 
 \subsubsection{Users, Roles and Permissions}
 
@@ -95,6 +100,8 @@ Structured taxonomy takes a different approach. With this approach, only the adm
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The front-end}
+
+The Drupal Content Management System includes a front-end functionality that can be used to display data. In this section, some of the most important concepts of the Drupal front-end will be discussed.
 
 \subsubsection{Themes}
 
@@ -139,6 +146,10 @@ When creating a layout using Drupal Layout Builder, two main concepts are used~\
 \end{itemize}
 There is a difference between the blocks specific to Layout Builder and the Drupal blocks which were mentioned in section \ref{sss:blocks}. The blocks used in Layout Builder are considered to be more of a guideline, or a placeholder indicating where some specific piece of content goes~\autocite{Drupalize2022}.
 
+
+\subsection{Drupal 8 vs Drupal 9}
+
+When the switch from Drupal 7 to Drupal 9 was made in 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -275,5 +286,22 @@ As illustrated in the last section, there are multiple possibilities to expose d
 \subsection{Web applications}
 
 When it comes to consuming data from an external API, the JavaScript front-end frameworks have been king for the last few years. They allow developers to easily make a request to a URL. One of the biggest players in this field is Angular. Being backed by Google, it means Angular has a very active community of developers around it. Other examples of JavaScript frameworks include the also well known React and Vue.js. Another less well known example is Svelte, a framework that has been gaining a lot of traction in the last couple of years~\autocite{Uzayr2019}.
+
+\subsubsection{Angular components}
+
+According to \textcite{Freeman2020}, Angular components are the main building blocks of an Angular application. A component consists of~\autocite{Angular2022}:
+
+\begin{itemize}
+	\item An HTML template
+	\item A TypeScript class
+	\item A CSS selector
+	\item A CSS file that applies only to this HTML template
+\end{itemize}
+
+\subsubsection{Angular dependency injection}
+
+\subsubsection{Angular Observables}
+
+Angular makes use of a concept called \emph{Observables} to handle various asynchonous tasks, like getting data form a server. Observables can be described as a kind of "container" that contains some data. An observable can be subscribed to in order to receive the data that is contained within. The interesting thing about observables is that when any data in the observable changes, any subscribers are notified of this so they can immediately receive the new data.
 
 \subsection{Mobile applications}

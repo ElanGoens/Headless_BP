@@ -75,7 +75,7 @@ When all these steps are completed, a new Drupal 9 site is ready for use. Before
 
 \subsubsection{Installing modules and themes}
 
-Installing modules in Drupal 9 is a fairly simple process. Modules that are included in Drupal 9 core can be easily enabeled through the user interface by going to \url{http://localhost:8888/admin/modules}. Contributed modules, available on \url{https://www.drupal.org} are a little trickier. The best way to install these is via the use of \emph{Composer}. According to \textcite{So2018} Composer is a dependency manager for PHP. It can be compared to NPM (Node Package Manager) for JavaScript. Using Composer, new modules can be easily installed by running the 'composer require' command in the root of your Drupal project. In the case of this proof of concept, the root directory is \emph{htdocs}. On other environments, the root directory is often called \emph{docroot}.
+Installing modules in Drupal 9 is a fairly simple process. Modules that are included in Drupal 9 core can be easily enabeled through the user interface by going to \url{http://localhost:8888/admin/modules}. Contributed modules, available on \url{https://www.drupal.org} are a little trickier. The best way to install these is via the use of \emph{Composer}. As mentioned in section \ref{sss:composer} Composer is a dependency manager for PHP. It can be compared to NPM (Node Package Manager) for JavaScript. Using Composer, new modules can be easily installed by running the 'composer require' command in the root of your Drupal project. In the case of this proof of concept, the root directory is \emph{htdocs}. On other environments, the root directory is often called \emph{docroot}.
 
 One module that can improve the user experience in Drupal is the \emph{Admin Toolbar}
 module the most recent version can be installed by using Composer: "composer require 'drupal/admin\_toolbar:3.1'". This module improves the default toolbar by transforming it into a  drop-down. It also has three sub-modules that can be enabled for further customizing the admin toolbar.
@@ -112,12 +112,6 @@ At the basis of using a headless CMS lies the exposing of data. This means that 
 \subsection{The JSON:API module}
 
 The JSON:API module is included in Drupal 9 Core, so there is no need to install it using composer. The module can be enabled by going to \url{http://localhost:8888/admin/modules}. When installing this module, the \emph{Serialization} module will be automatically installed as well, as it is a dependency for JSON:API.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{./img/Install_Config.png}
-	\caption[Configuring Drupal 9]{Configuring your Drupal 9 site}
-\end{figure}
 
 As explained earlier in section \ref{sss:JSONAPI}, no configuration is needed to make this module work. The only piece of configuration that exists here is the choice to allow all operations (create, read, update and delete) instead of just read operations. By default only read operations are accepted. This configuration can be found by going to \url{http://localhost:8888/admin/config/services/jsonapi}. For this example this option will be turned on.
 
@@ -186,12 +180,196 @@ As you can clearly see, using this module is a very easy way to expose the data 
 
 \subsection{The  RESTful Web Services module}
 
+The RESTful Web Services module is another way to expose data on your Drupal 9 site. It is also included in Drupal 9 core, so it just has to be enabled to be used. According to \textcite{So2018} this module gives you the possibility to use HTTP methods like GET, POST and DELETE on content entities (just like the JSON:API module), but also allows you to perform GET requests on configuration entities like vocabularies, user roles or other configuration. As this research mainly handles content, this last option will not be used.
 
+
+To set up this module, some steps are required. Like the JSON:API module, RESTful Web Services also has a dependency on the \emph{Serialization} module, so if this module is not installed it will be installed together with RESTful Web Services. It is also a good idea to install the \emph{HAL (Hypertext Application Language)} module and the \emph{HTTP Basic Authentication} module. The big difference when installing this module compared to installing JSON:API is that here content is only exposed per node. This means that you can only get the data of a single node of content at a time.
+
+To make it easier to expose content with RESTful Web Services, a contributed module called \emph{REST UI} exists. This module can be installed by running "composer require 'drupal/restui:1.20'". The module can then be enabled through the graphical user interface.
+
+As we want to be able to get the data of all of our \emph{Book} nodes at once, the current configuration will not suffice. This is where the creation of Views comes in. When going to the \emph{Views} tab in the Drupal UI, a new View can be created that groups together our books. If the RESTful Web Services module is enabled, it gives you the option to create a \emph{REST export} and provide a path for it when creating the view. When this view is created, it exports the data of all books to the path provided (in this case "/books?\_format=json"). The data for one book looks like this: 
+
+\begin{lstlisting}
+	[
+	{
+		"nid": [
+		{
+			"value": 2
+		}
+		],
+		"uuid": [
+		{
+			"value": "4b82e6d3-8138-484d-8c9e-5689ba65a671"
+		}
+		],
+		"vid": [],
+		"langcode": [],
+		"type": [
+		{
+			"target_id": "book",
+			"target_type": "node_type",
+			"target_uuid": "c002de19-a595-498e-bdd7-b792b28bf7ff"
+		}
+		],
+		"revision_timestamp": [],
+		"revision_uid": [],
+		"revision_log": [],
+		"status": [],
+		"uid": [],
+		"title": [
+		{
+			"value": "Harry Potter and the Philosopher's Stone"
+		}
+		],
+		"created": [],
+		"changed": [],
+		"promote": [],
+		"sticky": [],
+		"default_langcode": [],
+		"revision_translation_affected": [],
+		"path": [],
+		"field_abstract": [
+		{
+			"value": "<p>Harry Potter and the Philosopher's Stone&nbsp;is a&nbsp;fantasy novel&nbsp;written by British author&nbsp;J. K. Rowling. The first novel in ...</p>"
+		}
+		],
+		"field_author": [
+		{
+			"target_id": 1,
+			"target_type": "node",
+			"target_uuid": "24efb772-0b6f-4ad8-942f-05cf4e725ba9",
+			"url": "/node/1"
+		}
+		],
+		"field_image": [
+		{
+			"value": "https://upload.wikimedia.org/wikipedia/en/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg"
+		}
+		]
+	}
+	]
+\end{lstlisting}
+
+As you can see, this has a fairly similar structure to the one JSON:API offered. What is notable here is the lack of seperation between data and relationships. With RESTful Web Services, any reference field is still treated as a normal field, but contains data that can be used to get the content it is referencing, like the id and the url leading to that node.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{./img/View_Create.png}
+	\caption[Creating a View]{The configuration page for creating a new view}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{./img/View_Details.png}
+	\caption[Details of a View]{The details of the newly created view}
+\end{figure}
+
+For the purposes of this proof of concept, the output of the JSON:API module will be used to get the data on the front-end, as this module is the one most developers will use, and is the most straight forward to set up.
 
 \section{The front-end}
 
-There are many options to consider on the front-end. These range from javascript frameworks to native mobile applications. Basically any framework or tool that has a way to handle HTTP request throught the use of an HTTP client has the possibility to interact with a headless CMS. For this research, the choice was made to use the front-end javascript framework Angular. Angular is an extremely popular framework used around the world to create single page applications. It also has a built-in HTTP client that can be used to create any HTTP request and send it to any domain.
+There are many options to consider on the front-end. These range from the front-end included with Drupal 9, to JavaScript frameworks, to native mobile applications. Basically any framework or tool that has a way to handle HTTP requests through the use of an HTTP client has the possibility to interact with a headless CMS. 
+
+In the following sections the differences between the integrated Drupal front-end and a headless approach will be shown off. Firstly, Drupal Views will be used to display a list of the content that was added previously in the back-end. To show off the headless possibilities, the choice was made to use the front-end JavaScript framework Angular. Angular is an extremely popular framework used around the world to create single page applications. It also has a built-in HTTP client that can be used to create any HTTP request and send it to any domain. This way the data in the Drupal back-end will be displayed.
+
+\subsection{Drupal 9 front-end}
+
+Displaying our data using Views in Drupal is fairly straight forward. As we have already created a view to expose the data using RESTful Web Services, the same view can be used to display the data in Drupal. On the configuration page for the view, a new display can be added by choosing the "Add page" button. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{./img/Page_View_Config.png}
+	\caption[Details of a page display]{The details of a page display}
+\end{figure}
+
+This page display can be configured so it shows the content in teaser form. In its default form, this will just contain the title of the book. The teaser of this content type can be configured by going to the content type, and under the "manage display" tab choosing which fields will be displayed for this display. When adding the image, author and abstract fields to this display, the view will use these to display the list of books like in figure \ref{fig:Books}.
+
+As you can see, this is a pretty quick and easy way to be able to display a list of content. Using views, any content can be displayed this way.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{./img/Books_Page.png}
+	\caption[Display of a list of Books]{The page display of Books displays the fields of all the Books}
+	\label{fig:Books}
+\end{figure}
 
 \subsection{Single page web application with Angular}
+
+\subsubsection{Preperations and creating a new app}
+
+Creating a new Angular application requires a few differerent things. At the foundation of any JavaScript framework lies \gls{Node.js}. Node.js can be downloaded and installed from \url{https://nodejs.org/en/}. When installing Node.js, \gls{NPM} is usually installed with it. If Node.js is installed, the command "npm install --global @angular/cli@9.0.1" can be used to globally install the Angular CLI, which will be used to make a new Angular project among other things.
+
+To create a new Angular app, you can run "ng new {app-name}", with {app-name} replace by the name of the app. The Angular CLI will then scaffold a new Angular app, meaning that it will create all the necessary folders and files to get started with Angular. With the app created, you can run "ng serve" in the root of the application to start the app.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=5cm]{./img/Angular_Structure.png}
+	\caption[Angular folder structure]{The folder structure of a new Angular application}
+\end{figure}
+
+\subsubsection{Creating a new Angular component}
+
+Creating a new component (or building block) can be done by using the Angular CLI. Running "ng new component {component-name}" with {component-name} being replaced by the name of the new component will generate all the files needed. For this example "ng generate component book" is run to create a book component. This component will display a single book. 
+
+As two different components related to books have been created this way, it might be useful to create a book module, which can group these components together. A module can be created by running "ng generate module book --module=app". The "--module=app" option will make sure the module is imported in the app module. 
+
+As the goal is to display a list of books, another component called "Book List" will be required. This can be created by running "ng generate component book-list --module=book". This will generate the files for this component and import it in the new book module. 
+
+\subsubsection{Creating a new Angular service}
+
+Services in Angular are used to accomplish specific tasks. One task a service can perform is to make network requests, so a service will be needed to get the data from the Drupal back-end. This service can be created by running "ng generate service BookService".
+
+To make the connection to the back-end, the Angular HTTP Client will be imported from "@angular/common/http". An instance of this HTTP Client can be injected into the service using dependency injection. When this is done, a get method can be written to GET all the books from the back-end using the JSON:API url: \url{http://localhost:8888/jsonapi/node/book/}. The code for this service looks like this: 
+
+\begin{lstlisting}
+	import { Injectable } from '@angular/core';
+	import { HttpClient } from '@angular/common/http';
+	import { Observable } from 'rxjs';
+	
+	@Injectable({
+		providedIn: 'root'
+	})
+	export class BookService {
+		
+		constructor(private _http: HttpClient) { }
+		
+		get books$() : Observable<any>{
+			return this._http.get('http://localhost:8888/jsonapi/node/book/');
+		}
+	}
+\end{lstlisting}
+
+This method will return all the books from the back-end as an Observable, so any component that wishes to have these books can subscribe to this method. In this case, the book-list component will perform this task.
+
+\subsubsection{Subscribing to the service and displaying the data}
+
+To get the data, the book-list-component can subscribe to the method that was just defined in the service. The data that is found within the observable is assigned to a local list that will contain books. The code for this component looks like this:
+
+\begin{lstlisting}
+	import { Component, OnInit } from '@angular/core';
+	import { BookServiceService } from '../book-service.service';
+
+	@Component({
+		selector: 'app-book-list',
+		templateUrl: './book-list.component.html',
+		styleUrls: ['./book-list.component.css']
+	})
+	export class BookListComponent implements OnInit {
+	
+		public books: any;
+	
+		constructor(private _bookService: BookServiceService) {
+			_bookService.books$.subscribe(val => this.books = val.data);
+		}
+	
+		ngOnInit(): void {
+	}
+	
+}
+\end{lstlisting}
+
+
+
+
 
 \subsection{Mobile application with SwiftUi}

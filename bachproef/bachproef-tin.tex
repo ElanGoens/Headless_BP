@@ -8,6 +8,8 @@
 \usepackage{hogent-thesis-titlepage} % Titelpagina conform aan HOGENT huisstijl
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{glossaries}
 %%---------- Documenteigenschappen ---------------------------------------------
 % TODO: Vul dit aan met je eigen info:
 
@@ -37,6 +39,87 @@
 %  - 2e semester = 2e examenperiode => 2
 %  - tweede zit  = 3e examenperiode => 3
 \examenperiode{2}
+
+
+%===============================================================================
+% Glossary entries
+%===============================================================================
+
+
+\newglossaryentry{CMS}
+{
+	name=CMS,
+	description={A CMS or Content Management System is a piece of software that can help create and manage any content on a website}
+}
+
+\newglossaryentry{Drupal}
+{
+	name=Drupal,
+	description={An open source CMS written in PHP, created by Dries Buytaert in 2001}
+}
+
+\newglossaryentry{PHP}
+{
+	name=PHP,
+	description={A scripting or programming language often used in web development}
+}
+
+\newglossaryentry{Wordpress}
+{
+	name=Wordpress,
+	description={An open source CMS written in PHP, created by Matt Wullenweg and Mike Little in 2003}
+}
+
+\newglossaryentry{Joomla}
+{
+	name=Joomla,
+	description={An open source CMS written in PHP, created by Open Source Matters, Inc. in 2003}
+}
+
+\newglossaryentry{Headless}
+{
+	name=Headless,
+	description={The practice of decoupling the front-end from the back-end of a CMS}
+}
+
+\newglossaryentry{Drupal core}
+{
+	name={Drupal core},
+	description={The core release of Drupal, containing its most basic features}
+}
+
+\newglossaryentry{Composer}
+{
+	name={Composer},
+	description={The dependency manager used for PHP}
+}
+
+\newglossaryentry{CLI}
+{
+	name={CLI},
+	description={Command Line Interface, a way of interacting with a computer program through the use of text}
+}
+
+\newglossaryentry{NPM}
+{
+	name={CLI},
+	description={Node Package Manager, the dependency manager used for JavaScript}
+}
+
+\newglossaryentry{OOP}
+{
+	name={OOP},
+	description={Object Oriented Programming, a way of programming where objects are created that usually represent things that exist in real life}
+}
+
+\newglossaryentry{Node.js}
+{
+	name={Node.js},
+	description={A JavaScript runtime environment}
+}
+
+\makenoidxglossaries
+
 
 %===============================================================================
 % Inhoud document
@@ -82,6 +165,9 @@
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
 % https://www.overleaf.com/learn/latex/Glossaries
+
+\clearpage
+\printnoidxglossaries
 
 %---------- Kern ---------------------------------------------------------------
 
