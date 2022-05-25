@@ -147,9 +147,7 @@ When creating a layout using Drupal Layout Builder, two main concepts are used~\
 There is a difference between the blocks specific to Layout Builder and the Drupal blocks which were mentioned in section \ref{sss:blocks}. The blocks used in Layout Builder are considered to be more of a guideline, or a placeholder indicating where some specific piece of content goes~\autocite{Drupalize2022}.
 
 
-\subsection{Drupal 8 vs Drupal 9}
 
-When the switch from Drupal 7 to Drupal 9 was made in 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -206,7 +204,7 @@ several mirrored Web servers in order to perform transparent and effective deliv
 
 \subsection{Progressively decoupled}
 
-When using a progressively decoupled approach, the back-end of the CMS is not completely decoupled from the front-end. Instead, a javascript front-end framework is integrated, interwoven into the existing CMS front-end. This means that the Drupal front-end is still kept and not entirely replaced, unlike in the other two decoupled approaches. 
+When using a progressively decoupled approach, the back-end of the CMS is not completely decoupled from the front-end. Instead, a javascript front-end framework is integrated, interwoven into the existing CMS front-end. This means that the Drupal front-end is still kept and not entirely replaced, unlike in the other two decoupled approaches~\autocite{So2018}. 
 
 \begin{figure}
 	\centering
@@ -279,6 +277,7 @@ The big difference between this module and the previous one, is that with the RE
 
 For most use cases however, just being able to expose entities will be more than enough. This is why this module has lost some popularity in recent years in favor of JSON:API~\autocite{So2018}.
 
+
 \section{Front-end possibilities with headless}
 
 As illustrated in the last section, there are multiple possibilities to expose data in Drupal 9. Data that is exposed can be consumed by any front-end technology that has some sort of way to handle HTTP requests. In this section some of these technologies will be discussed.
@@ -289,7 +288,7 @@ When it comes to consuming data from an external API, the JavaScript front-end f
 
 \subsubsection{Angular components}
 
-According to \textcite{Freeman2020}, Angular components are the main building blocks of an Angular application. A component consists of~\autocite{Angular2022}:
+According to \textcite{Freeman2020}, Angular components are the main building blocks of an Angular application. A component consists of:
 
 \begin{itemize}
 	\item An HTML template
@@ -297,6 +296,8 @@ According to \textcite{Freeman2020}, Angular components are the main building bl
 	\item A CSS selector
 	\item A CSS file that applies only to this HTML template
 \end{itemize}
+
+
 
 \subsubsection{Angular dependency injection}
 

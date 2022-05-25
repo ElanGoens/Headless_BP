@@ -50,17 +50,7 @@ For this proof of concept, the Drupal 9 graphical user interface will be used, a
 
 \begin{enumerate}
 	\item Choosing the default installation language.
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=10cm]{./img/Install_Language.png}
-		\caption[Language choice]{Choosing a language in the Drupal 9 installation}
-	\end{figure}
 	\item Choosing an installation profile. Drupal 9 core comes with two default profiles that can be chosen. Firstly there is the standard profile. This profile comes with commonly used features already pre-configured. Secondly, the minimal profile is used to build a completely custom site without pre-configured functionality. There is also a demo profile included, which comes with some content already in the system. This can be used for testing out the possibilities of Drupal 9. For this research the standard profile will be used.
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=10cm]{./img/Install_Profile.png}
-		\caption[Install Profile Choice]{Choosing the install profile in the Drupal 9 installation}
-	\end{figure}
 	\item Setting up the database. In most cases, this step will be configured automatically by the installer. In some rare occasions though, there might be an issue that needs to be resolved by the site administrator.
 	\item Install site. This step will automatically install the Drupal 9 site on your system. As with the previous step, there might be some issues that need to be resolved before the installation can be completed.
 	\item Configuration of the site. In this step, you will be asked to configure some important settings. The site information, including the site name and e-mail address, need to be filled in, and you will need to configure an administration account for your website. The name of this account is usually \emph{admin}. After that, regional settings and update information need to be configured.
@@ -321,6 +311,7 @@ Services in Angular are used to accomplish specific tasks. One task a service ca
 
 To make the connection to the back-end, the Angular HTTP Client will be imported from "@angular/common/http". An instance of this HTTP Client can be injected into the service using dependency injection. When this is done, a get method can be written to GET all the books from the back-end using the JSON:API url: \url{http://localhost:8888/jsonapi/node/book/}. The code for this service looks like this: 
 
+
 \begin{lstlisting}
 	import { Injectable } from '@angular/core';
 	import { HttpClient } from '@angular/common/http';
@@ -368,6 +359,45 @@ To get the data, the book-list-component can subscribe to the method that was ju
 }
 \end{lstlisting}
 
+To display the data that is received a few steps are needed. Firstly,some HTML will be added in the template for the book-list component:
+\begin{lstlisting}
+<div style="text-align: center;">
+	<h1>
+		Books:
+	</h1>
+</div>
+<div class="container row">
+	<div class="column col-6">
+		<div *ngFor="let book of books">
+			<app-book [book]="book"></app-book>
+		</div>
+	</div>
+</div>
+\end{lstlisting}
+
+Next, the book component will need a field that can contain a single book. This field will be annotated with the @Input() decorator, to indicate that this field will be initialized by each book in the book list.
+
+\begin{lstlisting}
+import { Component, Input, OnInit } from '@angular/core';
+
+@Component({
+	selector: 'app-book',
+	templateUrl: './book.component.html',
+	styleUrls: ['./book.component.css']
+})
+export class BookComponent implements OnInit {
+	
+	@Input() public book: any;
+	
+	constructor() { }
+	
+	ngOnInit(): void {
+	}
+	
+}
+\end{lstlisting}
+
+And finally, some more HTML will be added in the template of the book component:
 
 
 
