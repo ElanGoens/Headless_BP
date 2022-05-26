@@ -17,7 +17,7 @@ Before diving into headless, a torough understanding of the CMS, in this is case
 
 \subsection{Drupal core}
 
-When installing Drupal with the standard profile, only \gls{Drupal core} is included. Drupal core includes all the basic features you need to get started on a website. Some of the most important features that are included in core are ~\autocite{Tomlinson2015}: 
+When installing Drupal with the standard profile, only \gls{Drupal core} is included. Drupal core includes all the basic features you need to get started on a website. Some of the most important features that are included in core according to \textcite{Tomlinson2015} are: 
 
 \begin{itemize}
 	\item  content
@@ -26,15 +26,14 @@ When installing Drupal with the standard profile, only \gls{Drupal core} is incl
 	\item  roles and permissions
 	\item  views
 \end{itemize}
-There are a lot more features included in core, but these can be seen as the most important ones.
 
-For any basic site Drupal core will probably suffice, but often a feature is needed that is not included in core. That is when contributed (contrib) and custom modules come in handy.
+For any basic site Drupal core will probably suffice, but often a feature is needed that is not included in core. That is when contributed (contrib) and custom modules come in handy \autocite{Tomlinson2015}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Contributed and custom modules}
 
-Contributed modules are custom modules, made by developers in the Drupal community, that are free to use and completely open to customization. There are thousands of contributed modules available on \url{https://www.drupal.org}. Some examples of popular contributed modules include~\autocite{Tomlinson2015}: 
+Contributed modules are custom modules, made by developers in the Drupal community, that are free to use and completely open to customization. There are thousands of contributed modules available on \url{https://www.drupal.org}. Some examples of popular contributed modules according to \textcite{Tomlinson2015} are: 
 
 \begin{itemize}
 	\item  \emph{Commerce}
@@ -81,9 +80,9 @@ For most websites nowadays, it is important to have the ability to control who c
 
 \subsubsection{Views}
 
-Views is one of the most important, and also one of the most used modules in Drupal 9. It has been a part of Drupal Core since Drupal 8. The Views module allows you to create lists content that can be displayed on your website.
+Views is one of the most important, and also one of the most used modules in Drupal 9. It has been a part of Drupal Core since Drupal 8. The Views module allows you to create lists content that can be displayed on your website \autocite{DrupalViews}.
 
-The concept of Views in Drupal 9 is realized in two modules: the core \emph{Views} module, and the \emph{Views UI} module accompanying it. Views UI offers an administration interface to work with and create views, so it is a crucial part of Views in its entirety~\autocite{Tomlinson2015}.
+The concept of Views in Drupal 9 is realized in two modules: the core \emph{Views} module, and the \emph{Views UI} module accompanying it \autocite{DrupalViews}. Views UI offers an administration interface to work with and create views, so it is a crucial part of Views in its entirety~\autocite{Tomlinson2015}.
 
 As already mentioned, in its simplest form Views allows you to create lists of content. But there are a lot of customization and configuration options available here. For example, there is the possibility to display your content in a regular list, but you can also choose to display it in a table, or even a grid~\autocite{Tomlinson2015}.
 
@@ -237,7 +236,7 @@ Representational State Transfer or REST is, according to~\textcite{Wilde2011}, \
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Web services in Drupal 9}
-Within Drupal 9 there exist two main ways of going headless. The most straightforward of the two is the JSON:API module. The other, which requires more configuration, is the Drupal core RESTful web services module. 
+Within Drupal 9 there exist two main ways of going headless. The most straightforward of the two is the JSON:API module. The other, which requires more configuration, is the Drupal core RESTful web services module~\autocite{Drupal2018}. 
 
 Both of these modules provide the possibility to interact with data through the classic HTTP request methods. According to~\autocite{Wilde2011} these methods are: 
 
@@ -253,9 +252,9 @@ Both of these modules provide the possibility to interact with data through the 
 
 Before the release of Drupal 8, the JSON:API was an immensly popular web services contributed module. Due to it's popularity and wide use, the first stable release of the module was included in Drupal core in Drupal 8.7. This meant that anyone using Drupal from that point on could easily enable the module on any Drupal installation. The only requirement for this module to be enabled is that the Serialization module also has to be enabled~\autocite{Drupal2019}.
 
-This module is meant to be easy to use, without a lot of configuration being necessary. Enabling the module will give the developer access to a REST API for any content type available on the website, exposing all the content of those types~\autocite{So2018}. This approach has many advantages. The main advantage is that is is very easy to use. One click is all it takes to enable the module and make all relational data available.
+This module is meant to be easy to use, without a lot of configuration being necessary. Enabling the module will give the developer access to a REST API for any content type available on the website, exposing all the content of those types~\autocite{So2018}. This approach has many advantages. The main advantage is that is is very easy to use. One click is all it takes to enable the module and make all relational data available~\autocite{So2018}.
 
-On the other hand, exposing all data like this this also means that, in a lot of situations, a lot of data will be exposed that won't ever be used because it is not needed. There is no in between with this module: you enable it and expose all data, or don't enable it and expose no data at all.
+On the other hand, exposing all data like this this also means that, in a lot of situations, a lot of data will be exposed that won't ever be used because it is not needed. There is no in between with this module: you enable it and expose all data, or don't enable it and expose no data at all~\autocite{So2018}.
 
 Using this module, the data of each entity is exposed in a set structure, using two members inside the JSON object. The \emph{attributes} member holds all data that is specific to that entity, like a name or a birthdate for an entity representing a person~\autocite{Drupal2019}. 
 
