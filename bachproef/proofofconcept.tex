@@ -37,8 +37,6 @@ The files for Drupal 9 were found and downloaded on \url{https://drupal.org/down
 
 Drupal 9 can be installed in two ways: by using drush, or by using the graphical user interface. 
 
-Drush is, according to \textcite{Tomlinson2015}, \emph{"a command line tool that greatly simplifies the tasks of building and administering a Drupal website."} Drush allows you to perform specific tasks related to your Drupal website, one of which is installing the website.
-
 For this proof of concept, the Drupal 9 graphical user interface was used, as it is still the most straight forward way of installing Drupal. When using this interface, Drupal 9 will prompt you through a few steps:
 
 \begin{enumerate}
@@ -58,7 +56,7 @@ When all these steps were completed, a new Drupal 9 site was ready for use. Befo
 
 \subsubsection{Installing modules and themes}
 
-Installing modules in Drupal 9 was a fairly simple process. Modules that are included in Drupal 9 core could be easily enabeled through the user interface by going to \url{http://localhost:8888/admin/modules}. Contributed modules, available on \url{https://www.drupal.org} were a little trickier. The best way to install these was via the use of \emph{Composer}. As mentioned in section \ref{sss:composer} Composer is a dependency manager for PHP.  Using Composer, new modules could be easily installed by running the 'composer require' command in the root of the Drupal project.
+Installing modules in Drupal 9 was a fairly simple process. Modules that are included in Drupal 9 core could be easily enabeled through the user interface by going to \url{http://localhost:8888/admin/modules}. Contributed modules, available on \url{https://www.drupal.org} were a little trickier. The best way to install these was via the use of \emph{Composer}. As mentioned in section \ref{sss:composer}  Composer is a dependency manager for PHP.  Using Composer, new modules could be easily installed by running the 'composer require' command in the root of the Drupal project.
 
 One module that was installed that could improve the user experience in Drupal was the \emph{Admin Toolbar} module. The most recent version was installed by using Composer: "composer require 'drupal/admin\_toolbar:3.1'". This module improved the default toolbar by transforming it into a  drop-down. It also has three sub-modules that can be enabled for further customizing the admin toolbar. Only the main module was installed for this proof of concept.
 
@@ -74,7 +72,7 @@ The \emph{Book} content type contains the following fields:
 	\item Title
 	\item Abstract
 	\item Image
-	\item Author (this field will be a reference field referencing the \emph{Author} content type)
+	\item Author (this field is a reference field referencing the \emph{Author} content type)
 \end{itemize}
 
 The \emph{Author} content type contains the following fields:
@@ -83,6 +81,8 @@ The \emph{Author} content type contains the following fields:
 	\item First Name
 	\item Last Name
 \end{itemize}
+
+Some content of these types was then added. One author was added (J.K. Rowling), and two books were added ("Harry Potter and the Philosopher's Stone" and Harry Potter and the Chamber of Secrets).
 
 \section{Exposing data}
 
@@ -94,51 +94,63 @@ The JSON:API module is included in Drupal 9 Core, so there was no need to instal
 
 As explained earlier in section \ref{sss:JSONAPI}, no configuration was needed to make this module work. The only important piece of configuration that exists on this module is the choice to allow all operations (create, read, update and delete) instead of just read operations. By default only read operations are accepted. This configuration was found by going to \url{http://localhost:8888/admin/config/services/jsonapi}. For this case this option was turned on.
 
-From the moment this module was enabled, all of the content available in the system was exposed in a standard, fixed format. This content, in JSON (JavaScript Object Notation) format, could be found at \url{http://localhost:8888/jsonapi/node/{content_type}}, replacing {content_type} with the content type that is needed. The data of the \emph{Book} content type could be found at (\url{http://localhost:8888/jsonapi/node/book}) and looked like this:
+From the moment this module was enabled, all of the content available in the system was exposed in a standard, fixed format. This content, in JSON (JavaScript Object Notation) format, could be found at \url{http://localhost:8888/jsonapi/node/{content_type}}, replacing {content\_type} with the content type that is needed. The data of the \emph{Book} content type could be found at (\url{http://localhost:8888/jsonapi/node/book}) and looked like this:
 
 \begin{lstlisting}
 {
-	"jsonapi": {},
-	"data": [
-	{
-		"type": "node--book",
-		"id": "4b82e6d3-8138-484d-8c9e-5689ba65a671",
-		"links": {},
-		"attributes": {
-			"drupal_internal__nid": 2,
-			"drupal_internal__vid": 2,
-			"langcode": "en",
-			"revision_timestamp": "2022-05-22T11:42:24+00:00",
-			"revision_log": null,
-			"status": true,
-			"title": "Harry Potter and the Philosopher's Stone",
-			"created": "2022-05-22T11:37:07+00:00",
-			"changed": "2022-05-22T11:42:24+00:00",
-			"promote": true,
-			"sticky": false,
-			"default_langcode": true,
-			"revision_translation_affected": true,
-			"path": {},
-			"field_abstract": {
-				"value": "<p>Harry Potter and the Philosopher's Stone&nbsp;is a&nbsp;fantasy novel&nbsp;written by British author&nbsp;J. K. Rowling. The first novel in ...</p>"
+"jsonapi": {},
+"data": [
+{
+	"type": "node--book",
+	"id": "4b82e6d3-8138-484d-8c9e-5689ba65a671",
+	"links": {},
+	"attributes": {
+		"drupal_internal__nid": 2,
+		"drupal_internal__vid": 2,
+		"langcode": "en",
+		"revision_timestamp": "2022-05-22T11:42:24+00:00",
+		"revision_log": null,
+		"status": true,
+		"title": "Harry Potter and the Philosopher's Stone",
+		"created": "2022-05-22T11:37:07+00:00",
+		"changed": "2022-05-22T11:42:24+00:00",
+		"promote": true,
+		"sticky": false,
+		"default_langcode": true,
+		"revision_translation_affected": true,
+		"path": {},
+		"field_abstract": {
+			"value": "<p>Harry Potter and the Philosopher's Stone&nbsp;is a&nbsp;fantasy novel&nbsp;written by British author&nbsp;J. K. Rowling. The first novel in ...</p>"
+		}
+	},
+	"relationships": {
+		"node_type": {},
+		"revision_uid": {},
+		"uid": {},
+		"field_image": {
+			"data": {
+				"type": "file--file",
+				"id": "cd60b099-e3ef-4930-b6d6-c0d3793c5e7f",
+				"meta": {
+					"alt": "https://upload.wikimedia.org/wikipedia/en/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg",
+					"title": "",
+					"width": 253,
+					"height": 394
+				}
 			},
-			"field_image": "https://upload.wikimedia.org/wikipedia/en/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg"
+			"links": {}
 		},
-		"relationships": {
-			"node_type": {},
-			"revision_uid": {},
-			"uid": {},
-			"field_author": {
-				"data": {
-					"type": "node--author",
-					"id": "24efb772-0b6f-4ad8-942f-05cf4e725ba9"
-				},
-				"links": {}
-			}
+		"field_author": {
+			"data": {
+				"type": "node--author",
+				"id": "24efb772-0b6f-4ad8-942f-05cf4e725ba9"
+			},
+			"links": {}
 		}
 	}
-	],
-	"links": {}
+}
+],
+"links": {}
 }
 \end{lstlisting}
 
@@ -159,16 +171,15 @@ As you can clearly see, using this module was a very easy way to expose the data
 
 \subsection{The  RESTful Web Services module}
 
-The RESTful Web Services module was another way to expose data on your Drupal 9 site. It was also included in Drupal 9 core, so it just had to be enabled to be used. According to \textcite{So2018} this module gives you the possibility to use HTTP methods like GET, POST and DELETE on content entities (just like the JSON:API module), but also allows you to perform GET requests on configuration entities like vocabularies, user roles or other configuration. As this research mainly handles content, this last option was not used.
-
+The RESTful Web Services module was another way to expose data on your Drupal 9 site. It was also included in Drupal 9 core, so it just had to be enabled to be used.
 
 To set up this module, some steps were required. Like the JSON:API module, RESTful Web Services also had a dependency on the \emph{Serialization} module. As this module was already enabled when enabling the JSON:API module, it did not have to be enabled again. The \emph{HAL (Hypertext Application Language)} module and the \emph{HTTP Basic Authentication} module were also installed. The big difference when installing this module compared to installing JSON:API was that here content was only exposed per node by default. This meant that a list of content, namely the books, was not exposed by default and would have to be configured later.
 
 To make it easier to expose content with RESTful Web Services, a contributed module called \emph{REST UI} was installed by running "composer require 'drupal/restui:1.20'". The module was then be enabled through the graphical user interface.
 
-As previously mentioned, the list of books that needed to be exposed was not exposed by default with this module. This is where the creation of Views came in. By going to the \emph{Views} tab in the Drupal UI, a new View was be created that would group together the books. With the RESTful Web Services module is enabled, the view configuration page allowed for the creation of a \emph{REST export}. There was an option to define the path to where the books would be exposed, which was chosen to be "/books". 
+As previously mentioned, the list of books that needed to be exposed was not exposed by default with this module. This is where the creation of Views came in. By going to the \emph{Views} tab in the Drupal UI, a new View was be created that would group together the books. With the RESTful Web Services module enabled, the view configuration page allowed for the creation of a \emph{REST export}. There was an option to define the path to where the books would be exposed, which was chosen to be "/books". 
 
-The data of all books was then exposed to the path provided followed by the type of format. The three formats that could be chosen are JSON, XML. So, to get this data in JSON format, \url{http://localhost:8888/booksrest?_format=json} was used. For XML, this was \url{http://localhost:8888/booksrest?_format=xml}. The configuration of the REST export view is shown in figure \ref{fig:RESTView}. The data for one book in the list, in JSON format, looks like this: 
+The data of all books was then exposed to the path provided followed by the type of format. The two formats that could be chosen were JSON and XML. So, to get this data in JSON format, \url{http://localhost:8888/booksrest?_format=json} was used. For XML, this was \url{http://localhost:8888/booksrest?_format=xml}. The configuration of the REST export view is shown in figure \ref{fig:RESTView}. The data for one book in the list, in JSON format, looks like this: 
 
 \begin{lstlisting}
 	[
@@ -224,14 +235,14 @@ The data of all books was then exposed to the path provided followed by the type
 		],
 		"field_image": [
 		{
-			"target_id": 2,
-			"alt": "https://upload.wikimedia.org/wikipedia/en/5/5c/Harry_Potter_and_the_Chamber_of_Secrets.jpg",
+			"target_id": 1,
+			"alt": "https://upload.wikimedia.org/wikipedia/en/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg",
 			"title": "",
-			"width": 255,
-			"height": 392,
+			"width": 253,
+			"height": 394,
 			"target_type": "file",
-			"target_uuid": "467e7908-01b1-4591-9dba-98f3ef1c9dec",
-			"url": "http://localhost:8888/sites/default/files/2022-05/Harry_Potter_and_the_Chamber_of_Secrets.jpeg"
+			"target_uuid": "cd60b099-e3ef-4930-b6d6-c0d3793c5e7f",
+			"url": "http://localhost:8888/sites/default/files/2022-05/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpeg"
 		}
 		],
 	}
@@ -259,11 +270,11 @@ When considering a headless project it is very important to also consider the wa
 
 When you want to expose only certain content types, or if you want to expose anything different than a content type, RESTful Web Services will be a better fit. It allows full configuration of which content to expose and in what format. It also gives you the possibility to expose any custom data that might be present in the system.
 
-For the purposes of this proof of concept, the output of the JSON:API module was used to get the data on the front-end, as this is a website with a very small amount of data. The default json format was a natural fit, and no custom data needed to be exposed. 
+For the purposes of this proof of concept, the output of the JSON:API module was used to get the data on the front-end, as this is a website with a very small amount of data. The default JSON format was a natural fit, and no custom data needed to be exposed. 
 
 \section{The front-end}
 
-There are many options to consider on the front-end. These range from the front-end included with Drupal 9, to JavaScript frameworks, to native mobile applications. Basically any framework or tool that has a way to handle HTTP requests through the use of an HTTP client has the possibility to interact with a headless CMS. 
+There are many options to consider on the front-end. These range from the front-end included with Drupal 9, to JavaScript frameworks, to native mobile applications. Basically any framework or tool that has a way to handle HTTP requests through the use of a HTTP client has the possibility to interact with a headless CMS. 
 
 In the following sections the differences between the integrated Drupal front-end and a headless approach will be shown off. Firstly, Drupal Views was used to display a list of the content that was added previously in the back-end. To show off the headless possibilities, the choice was made to use the front-end JavaScript framework Angular. Angular is an extremely popular framework used around the world to create single page applications. It also has a built-in HTTP client that can be used to create any HTTP request and send it to any domain. This way the data in the Drupal back-end was requested and displayed.
 
@@ -301,7 +312,7 @@ To create a new Angular app, the "ng new {app-name}" command is run, with {app-n
 
 Creating a new component (or building block) was done by using the Angular CLI. Running "ng new component {component-name}" with {component-name} being replaced by the name of the new component generates all the files needed. For this example "ng generate component book" was run to create a book component. This component displays a single book. 
 
-As another component needed to be created to display the books in a list, module was created by running "ng generate module book --module=app". The "--module=app" option makes sure the module is imported in the app module. This module is used to group together any components related to books.
+As another component needed to be created to display the books in a list, a new module was created by running "ng generate module book --module=app". The "--module=app" option makes sure the module is imported in the app module. This module is used to group together any components related to books.
 
 As the goal is to display a list of books, another component called "Book List" was required. This component was created by running "ng generate component book-list --module=book". This command generated the files for this component and made sure that it is included in the book module.
 
@@ -309,7 +320,7 @@ As the goal is to display a list of books, another component called "Book List" 
 
 Services in Angular are used to accomplish specific tasks. One task a service can perform is to make network requests, so a service was needed to get the data from the Drupal back-end. This service was created by running "ng generate service BookService".
 
-To make the connection to the back-end, the Angular HTTP Client was imported from "@angular/common/http". An instance of this HTTP Client was then injected into the service using dependency injection, by including it as an argument in the constructor. This means that whenever this service is created, an HttpClient is passed to it. A get method was then defined to GET all the books from the back-end using the JSON:API URL: \url{http://localhost:8888/jsonapi/node/book/}. The code for this service looks like this: 
+To make the connection to the back-end, the Angular HTTP Client was imported from "@angular/common/http". An instance of this HTTP Client was then injected into the service using dependency injection, by including it as an argument in the constructor. This means that whenever this service is created, a HttpClient is passed to it. A get method was then defined to GET all the books from the back-end using the JSON:API URL: \url{http://localhost:8888/jsonapi/node/book/}. The code for this service looks like this: 
 
 
 \begin{lstlisting}
@@ -349,7 +360,7 @@ To get the data, the book list component subscribes to the method that was defin
 	
 		public books: any;
 	
-		constructor(private _bookService: BookServiceService) {
+		constructor(private _bookService: BookService) {
 			_bookService.books$.subscribe(val => this.books = val.data);
 		}
 	
